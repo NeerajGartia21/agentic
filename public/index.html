@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cloudflare AI Agent</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div class="brand">
+          <span class="logo">🤖</span>
+          <div>
+            <h1>Cloudflare AI Agent</h1>
+            <p class="sub">Llama 3.3 · Workers AI · Durable Objects · Workflows</p>
+          </div>
+        </div>
+        <div class="status">
+          <span id="stateBadge" class="badge">memory: 0 msgs</span>
+          <button id="clearBtn" class="ghost" title="Clear conversation memory">Clear</button>
+        </div>
+      </header>
+
+      <main id="messages" class="messages" aria-live="polite"></main>
+
+      <footer class="composer">
+        <form id="form">
+          <input
+            id="input"
+            autocomplete="off"
+            placeholder="Ask anything…  (tip: /research quantum computing)"
+          />
+          <button id="send" type="submit">Send</button>
+        </form>
+        <p class="hint">
+          <code>/research &lt;topic&gt;</code> runs a durable multi-step Workflow that
+          plans → gathers → summarizes, then saves the briefing to memory.
+        </p>
+      </footer>
+    </div>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

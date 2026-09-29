@@ -1,0 +1,22 @@
+{
+  "name": "cloudflare-ai-agent",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "An AI-powered application on Cloudflare: Workers AI (Llama 3.3) + Agents (Durable Objects) + Workflows + a chat UI.",
+  "scripts": {
+    "dev": "wrangler dev",
+    "start": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "types": "wrangler types",
+    "check": "wrangler deploy --dry-run"
+  },
+  "dependencies": {
+    "agents": "^0.2.9",
+    "ai": "^7.0.79"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "wrangler": "^4.42.0"
+  }
+}

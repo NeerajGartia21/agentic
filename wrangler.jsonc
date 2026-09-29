@@ -1,0 +1,33 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cloudflare-ai-agent",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-09-01",
+  "compatibility_flags": ["nodejs_compat"],
+
+  // Static chat UI (served for any non-/agents/ path).
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS"
+  },
+
+  // Component 1: LLM — Workers AI binding (Llama 3.3). No API key required.
+  "ai": { "binding": "AI" },
+
+  // Component 4: Memory/state + coordination — the Agent is a SQLite-backed Durable Object.
+  "durable_objects": {
+    "bindings": [{ "name": "ChatAgent", "class_name": "ChatAgent" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["ChatAgent"] }],
+
+  // Component 2: Workflow — durable, multi-step research pipeline.
+  "workflows": [
+    {
+      "name": "research-workflow",
+      "binding": "RESEARCH_WORKFLOW",
+      "class_name": "ResearchWorkflow"
+    }
+  ],
+
+  "observability": { "enabled": true }
+}
